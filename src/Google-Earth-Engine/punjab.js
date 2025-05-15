@@ -1,3 +1,5 @@
+var countries = ee.FeatureCollection("FAO/GAUL/2015/level1");
+
 // -----------------------------------------
 // 1. ROI: Punjab
 // -----------------------------------------
