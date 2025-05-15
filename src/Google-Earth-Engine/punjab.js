@@ -1,26 +1,16 @@
 // -----------------------------------------
-// 1. Define Region of Interest: Punjab
+// 1. ROI: Punjab
 // -----------------------------------------
-// var punjab = countries
-//     .filter(ee.Filter.eq('ADM1_NAME', 'Punjab'))
-//     .filter(ee.Filter.eq('ADM0_NAME', 'Pakistan'))
-//     .geometry();
-
-// Map.centerObject(punjab)
-
-// Filter for Pakistan
-var pakistan = gaul.filter(ee.Filter.eq('ADM0_NAME', 'Pakistan'));
-
-// Filter for Punjab and Islamabad
+var pakistan = countries.filter(ee.Filter.eq('ADM0_NAME', 'Pakistan'));
 var punjab = pakistan.filter(ee.Filter.eq('ADM1_NAME', 'Punjab'));
-var islamabad = pakistan.filter(ee.Filter.eq('ADM1_NAME', 'Islamabad Capital Territory'));
+var islamabad = pakistan.filter(ee.Filter.eq('ADM1_NAME', 'Islamabad'));
 
-// Combine geometries
+
 var combined = punjab.merge(islamabad);
 var mergedGeometry = combined.geometry().dissolve(); // dissolve into single geometry
 
 // Add to map
-Map.centerObject(mergedGeometry, 7);
+Map.centerObject(mergedGeometry);
 Map.addLayer(mergedGeometry, { color: 'red' }, 'Punjab + Islamabad');
 
 // -----------------------------------------
