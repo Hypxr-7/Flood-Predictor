@@ -178,7 +178,6 @@ def train_and_evaluate(
     # Precision-Recall AUC
     precision_vals, recall_vals, pr_thresholds = precision_recall_curve(labels, probabilities)
     pr_auc_value = auc(recall_vals, precision_vals)
-    print(f"PR AUC: {pr_auc_value:.4f}")
 
     # Plot confusion matrix
     cm = confusion_matrix(labels, predictions)

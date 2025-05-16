@@ -175,8 +175,6 @@ def train_model():
     plt.title(f'Precision-Recall Curve (AUC={pr_auc:.2f})')
     plt.savefig("precision_recall_curve.png")
 
-    print(f"PR AUC: {pr_auc:.4f}")
-
 
 if __name__ == "__main__":
     train_model()

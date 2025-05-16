@@ -9,5 +9,3 @@ Classification Report:
     accuracy                           0.83       300
    macro avg       0.62      0.71      0.64       300
 weighted avg       0.89      0.83      0.85       300
-
-PR AUC: 0.3659
