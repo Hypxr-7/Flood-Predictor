@@ -1,47 +1,37 @@
 import pandas as pd
-from sklearn.experimental import enable_iterative_imputer  # noqa
+from sklearn.experimental import enable_iterative_imputer # not need bu still must be imported for proper functionality 
+
 from sklearn.impute import IterativeImputer
-import sys
 
-def main(input_csv):
-    # Load CSV
-    df = pd.read_csv(input_csv)
 
-    # Strip whitespace from column names
-    df.columns = df.columns.str.strip()
+input_csv = "data/final/gilgit.csv"
+df = pd.read_csv(input_csv)
 
-    # Combine Month + Year into datetime for internal use
-    df['datetime'] = pd.to_datetime(df['Month'] + ' ' + df['Year'].astype(str), format='%b %Y')
+df.columns = df.columns.str.strip()
 
-    print("Initial missing values per column:")
-    print(df.isnull().sum())
+# Combine Month + Year into datetime for internal use
+df['datetime'] = pd.to_datetime(df['Month'] + ' ' + df['Year'].astype(str), format='%b %Y')
 
-    # Columns to impute
-    cols_to_impute = ['Avg LST', 'Avg NDSI', 'Avg NDVI', 'Avg Precipitation']
+print("Initial missing values per column:")
+print(df.isnull().sum())
 
-    # Imputer setup
-    imputer = IterativeImputer(random_state=42)
-    df[cols_to_impute] = imputer.fit_transform(df[cols_to_impute])
+# Columns to impute
+cols_to_impute = ['Avg LST', 'Avg NDSI', 'Avg NDVI', 'Avg Precipitation']
 
-    print("\nMissing values after imputation:")
-    print(df.isnull().sum())
+# Imputer setup
+imputer = IterativeImputer(random_state=42)
+df[cols_to_impute] = imputer.fit_transform(df[cols_to_impute])
 
-    # Convert datetime back to separate Month and Year
-    df['Month'] = df['datetime'].dt.strftime('%b')
-    df['Year'] = df['datetime'].dt.year
+print("\nMissing values after imputation:")
+print(df.isnull().sum())
 
-    # Drop helper column
-    df = df.drop(columns=['datetime'])
+# Convert datetime back to separate Month and Year
+df['Month'] = df['datetime'].dt.strftime('%b')
+df['Year'] = df['datetime'].dt.year
 
-    # Save the imputed data
-    output_csv = input_csv.replace('.csv', '_imputed.csv')
-    df.to_csv(output_csv, index=False)
-    print(f"\nImputed data saved to: {output_csv}")
+# Drop helper column
+df = df.drop(columns=['datetime'])
 
-if __name__ == "__main__":
-#     if len(sys.argv) != 2:
-#         print("Usage: python fill_missing_data_v2.py yourfile.csv")
-#         sys.exit(1)
-
-    input_csv = "data/final/GILGIT-DATA.csv"
-    main(input_csv)
+# Save the imputed data
+output_csv = input_csv.replace('.csv', '_imputed.csv')
+df.to_csv(output_csv, index=False)
