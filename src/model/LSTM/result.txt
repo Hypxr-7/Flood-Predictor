@@ -1,0 +1,13 @@
+Test Accuracy: 0.861
+
+Test class distribution: {np.int64(0): np.int64(266), np.int64(1): np.int64(22)}
+              precision    recall  f1-score   support
+
+    No Flood       0.93      0.92      0.92       266
+       Flood       0.12      0.14      0.13        22
+
+    accuracy                           0.86       288
+   macro avg       0.53      0.53      0.53       288
+weighted avg       0.87      0.86      0.86       288
+
+PR AUC: 0.1385

@@ -1,0 +1,13 @@
+Test Accuracy: 0.83
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    No Flood       0.95      0.85      0.90       272
+       Flood       0.29      0.57      0.38        28
+
+    accuracy                           0.83       300
+   macro avg       0.62      0.71      0.64       300
+weighted avg       0.89      0.83      0.85       300
+
+PR AUC: 0.3659
