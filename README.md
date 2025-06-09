@@ -1,37 +1,39 @@
 # Flood Predictor
 
-This is a project for our Introduction to AI course where we built a flood prediction model using ANNs and RNNs for anticipating floods in Pakistan and taking timely action
+This is a project for our *Introduction to AI* course where we built a flood prediction model using Artificial Neural Networks (ANNs) and Recurrent Neural Networks (RNNs) to anticipate floods in Pakistan and enable timely action.
 
-# Data Accusation
+# Data Acquisition
 
-The prediction makes use of 4 attributes to make predictions
+Our model uses four key attributes to make predictions:
 
-1. Land Surface Temperature (LST)
-2. Normalized Difference Vegetation Index (NDVI)
-3. Normalized Difference Snow Index (NDSI)
-4. Precipitation
-   
-We used Google Earth Engine and its javascript API to acquire this data from 1-1-2000 to the present day.
+1. **Land Surface Temperature (LST)**
+2. **Normalized Difference Vegetation Index (NDVI)**
+3. **Normalized Difference Snow Index (NDSI)**
+4. **Precipitation**
 
-For acquiring the labels, we used websites like wikipedia which contained the list of floods in Pakistan.
+We used **Google Earth Engine** and its JavaScript API to acquire this data, covering the period from **January 1, 2000 to the present day**.
+
+To obtain the flood occurrence labels, we consulted publicly available sources such as **Wikipedia**, which contains lists of major floods in Pakistan.
 
 # Preprocessing the Data
 
-The data as it was could not have been passed to our model for training. There were several things we needed to do to the data:
+The raw data required several preprocessing steps before it could be used to train our models:
 
-* Combine the various files for a province into a single one for each province
-* Use an imputer to fill in missing values
-* Combine each provincial file into a single one
-* Add labels to the data
+* **Merging**: Combined multiple data files for each province into a single file per province.
+* **Imputation**: Used imputers to fill in missing values.
+* **Aggregation**: Merged all provincial files into one consolidated dataset.
+* **Labeling**: Added flood occurrence labels to the data.
 
-# Training and Validating
+# Training and Validation
 
-With the data in the right format, we could pass it into our model to train and test.
+After preprocessing, we used the prepared dataset to train and validate both ANN and RNN models.
 
 # Acknowledgments
 
-This was a group project which could not have been done without the effort of the entire team:
+This was a collaborative group project, made possible by the efforts of the entire team:
 
 * [Aadesh Panjwani](https://github.com/mobmuseum)
 * [Syed Ahmed Farrukh](https://github.com/hydra4004)
 * [Yaman Sibtain](https://github.com/Y-Sibtain)
+
+---
